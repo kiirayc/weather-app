@@ -37,6 +37,7 @@ class Query(Base):
     end_date: Mapped[date] = mapped_column(Date, nullable=False)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
+        # call each time a new row is inserted
         default=lambda: datetime.now(timezone.utc)
     )
 
@@ -61,7 +62,7 @@ class Observation(Base):
     __tablename__ = "observations"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     query_id: Mapped[int] = mapped_column(ForeignKey("queries.id"), nullable=False)
-    query_date: Mapped[date] = mapped_column("date", Date, nullable=False)
+    query_date: Mapped[date] = mapped_column(Date, nullable=False)
     t_min: Mapped[float | None] = mapped_column(Float, nullable=True)
     t_max: Mapped[float | None] = mapped_column(Float, nullable=True)
     t_mean: Mapped[float | None] = mapped_column(Float, nullable=True)
