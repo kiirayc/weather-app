@@ -13,11 +13,11 @@ def parse_date(s: str | None):
 
 def validate_date_range(start, end, max_days: int = 365 * 3):
     if not start or not end:
-        return False, "start_date and end_date (YYYY-MM-DD) are required"
+        return False, "Start_date and end_date (YYYY-MM-DD) are required"
     if start > end:
-        return False, "start_date must be <= end_date"
+        return False, "Start_date must be less than or equal to end_date"
     if (end - start).days > max_days:
-        return False, f"Date range too long; must be <= {max_days} days"
+        return False, f"Date range is too long; must be less than or equal to {max_days} days"
     return True, "ok"
 
 def to_csv_bytes(records: list[dict]) -> bytes:
