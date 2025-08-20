@@ -53,11 +53,12 @@ Now open your browser at:
 ```php
 .
 ├── app.py              # Flask entry point
-├── services/           # Database models and services
+├── services/           # API services and utils
 ├── static/             # JS, CSS
 ├── templates/          # HTML templates
-├── weather.db          # Local SQLite DB (ignored in .gitignore)
+├── weather.db          # Local SQLite DB (will be automatically created)
 ├── requirements.txt    # Python dependencies
+├── db.py               # Database models
 └── README.md           # This file
 ```
 
