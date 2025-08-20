@@ -196,3 +196,8 @@ function useGeo() {
     { enableHighAccuracy: true, timeout: 10000 }
   );
 }
+
+function toggleInfo() {
+    const el = document.getElementById("infoText");
+    el.style.display = (el.style.display === "none") ? "inline" : "none";
+  }

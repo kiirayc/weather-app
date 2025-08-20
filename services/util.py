@@ -11,7 +11,7 @@ def parse_date(s: str | None):
     except Exception:
         return None
 
-def validate_date_range(start, end, max_days: int = 365 * 3):
+def validate_date_range(start, end, max_days: int = 365):
     if not start or not end:
         return False, "Start_date and end_date (YYYY-MM-DD) are required"
     if start > end:
@@ -32,7 +32,7 @@ def to_csv_bytes(records: list[dict]) -> bytes:
             "lon",
             "start_date",
             "end_date",
-            "query_date",
+            "created_at",
             "t_min",
             "t_max",
             "t_mean",
@@ -50,7 +50,7 @@ def to_csv_bytes(records: list[dict]) -> bytes:
                     loc.get("longitude"),
                     r.get("start_date"),
                     r.get("end_date"),
-                    obs.get("query_date"),
+                    r.get("created_at"),
                     obs.get("t_min"),
                     obs.get("t_max"),
                     obs.get("t_mean"),
