@@ -21,7 +21,7 @@
       <div class="card">
         <h3>Current Weather & 5-Day Forecast</h3>
         <form onsubmit="return false" style="display:flex; gap:.5rem; flex-wrap:wrap">
-          <input id="q" placeholder="City or landmark" />
+          <input id="q" placeholder="Type in Your City" />
           <button type="button" onclick="fetchCurrent()">Get Current</button>
           <button type="button" onclick="fetchForecast()">Get 5-Day Forecast</button>
           <button type="button" onclick="useGeo()">Use My Location</button>
@@ -41,7 +41,7 @@
       <div class="card">
         <h3>Create Historical Query (Persisted)</h3>
         <form onsubmit="return false" style="display:flex; gap:.5rem; flex-wrap:wrap">
-          <input id="loc" placeholder="Location (city or landmark)" />
+          <input id="loc" placeholder="Type in Your City" />
           <input id="sd" type="date" />
           <input id="ed" type="date" />
           <button id="createBtn" onclick="createQuery()">Create</button>
