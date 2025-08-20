@@ -9,9 +9,11 @@
 <body>
   <h1>Weather App</h1>
   <small>by Kira Cho ·
-    <a href="https://www.linkedin.com/school/pmaccelerator/" target="_blank" class="info-link">
-      Info
-    </a>
+    <button class="info-btn" onclick="toggleInfo()">Click For More Info</button>
+    <span id="infoText" style="display:none; margin-left:.5rem; color:#555;">
+      This weather app is made for tech assessment at PM Accelerator. The Product Manager Accelerator Program is designed to support PM professionals through every stage of their careers.
+      From students looking for entry-level jobs to Directors looking to take on a leadership role, our program has helped over hundreds of students fulfill their career aspirations.
+    </span>
   </small>
 
   <div class="row">
@@ -63,5 +65,6 @@
   </div>
 
   <script src="{{ url_for('static', filename='script.js') }}?v=4"></script>
+  <script src="{{ url_for('static', filename='queries.js') }}?v=1"></script>
 </body>
 </html>
