@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Query{% if q %} #{{ q.id }}{% endif %} – Weather App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <a href="/">← Back</a>
+  {% if q %}
+    <h2>Query #{{ q.id }}</h2>
+    <div class="muted">
+      {{ q.location.name }}{% if q.location.country %}, {{ q.location.country }}{% endif %}
+      · {{ q.start_date.isoformat() }} → {{ q.end_date.isoformat() }}
+    </div>
+
+    {% if q.observations %}
+    <table style="margin-top:1rem;">
+      <thead><tr><th>Date</th><th>Min °C</th><th>Max °C</th><th>Mean °C</th></tr></thead>
+      <tbody>
+        {% for o in q.observations %}
+        <tr>
+          <td>{{ o.query_date.isoformat() }}</td>
+          <td>{{ o.t_min if o.t_min is not none else "—" }}</td>
+          <td>{{ o.t_max if o.t_max is not none else "—" }}</td>
+          <td>{{ o.t_mean if o.t_mean is not none else "—" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <p class="muted">No observations.</p>
+    {% endif %}
+  {% else %}
+    <p class="muted">Query not found.</p>
+  {% endif %}
+</body>
+</html>

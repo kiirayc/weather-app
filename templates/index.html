@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weather App — Kira Cho</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <h1>Weather App</h1>
+  <small>by Kira Cho ·
+    <a href="https://www.linkedin.com/school/pmaccelerator/" target="_blank" class="info-link">
+      Info
+    </a>
+  </small>
+
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <h3>Current Weather & 5-Day Forecast</h3>
+        <form onsubmit="return false" style="display:flex; gap:.5rem; flex-wrap:wrap">
+          <input id="q" placeholder="City or landmark" />
+          <button type="button" onclick="fetchCurrent()">Get Current</button>
+          <button type="button" onclick="fetchForecast()">Get 5-Day Forecast</button>
+          <button type="button" onclick="useGeo()">Use My Location</button>
+        </form>
+
+        <div id="currentOut" class="current" style="margin-top:0.5rem; padding-left:0.2rem; display:inline-block;">
+          <span class="muted">No data yet. Search above ⬆️</span>
+        </div>
+
+        <div id="forecastOut" class="forecast-grid" style=padding-left:0.2rem;>
+          <em class="muted">No forecast yet.</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <h3>Create Historical Query (Persisted)</h3>
+        <form onsubmit="return false" style="display:flex; gap:.5rem; flex-wrap:wrap">
+          <input id="loc" placeholder="Location (city or landmark)" />
+          <input id="sd" type="date" />
+          <input id="ed" type="date" />
+          <button id="createBtn" onclick="createQuery()">Create</button>
+        </form>
+
+        <div id="createErr" class="muted" style="color:#b91c1c; margin-top:.5rem;"></div>
+        <div id="createMsg" style="margin-top:.5rem;"></div>
+        <pre id="createOut" class="muted" style="margin-top:.5rem;"></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Saved Queries</h3>
+    <div><a href="/export.json">Export JSON</a> · <a href="/export.csv">Export CSV</a></div>
+    <table id="queriesTbl">
+      <thead><tr><th>ID</th><th>Location</th><th>Dates</th><th>Actions</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <div id="detailPanel" style="margin-top:.75rem;"></div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}?v=4"></script>
+</body>
+</html>
